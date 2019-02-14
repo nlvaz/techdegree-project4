@@ -7,6 +7,7 @@ const startButton = document.querySelector("#btn__reset");
 const phraseDiv = document.querySelector('#phrase ul');
 const keyrows = document.querySelectorAll('#qwerty .keyrow');
 const hearts = document.querySelectorAll("#scoreboard .tries");
+const buttonKeys = document.querySelectorAll(".key");
 
 startButton.addEventListener('click', () => {
 	if(phraseDiv.children.length !== 0) {
@@ -41,7 +42,19 @@ document.addEventListener('click', event => {
 
 //eventListener for onscreen letters when matching letter clicked on keyboard
 document.addEventListener('keypress', event => {
-	console.log(event.keyCode);
+	const letter = String.fromCharCode(event.keyCode).toLowerCase();
+	let handlerButton;
+
+	if(/[a-z]/.test(letter)) {
+		for(let i = 0; i < buttonKeys.length; i++) {
+			const current = buttonKeys[i];
+
+			if(current.textContent === letter)
+				handlerButton = current;
+		}
+
+		game.handleInteraction(handlerButton);
+	}
 });
 
 
