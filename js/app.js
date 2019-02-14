@@ -9,6 +9,7 @@ const keyrows = document.querySelectorAll('#qwerty .keyrow');
 const hearts = document.querySelectorAll("#scoreboard .tries");
 const buttonKeys = document.querySelectorAll(".key");
 
+//eventListner for the reset button that resets game if needed, and starts a new game
 startButton.addEventListener('click', () => {
 	if(phraseDiv.children.length !== 0) {
 		for(let i = phraseDiv.children.length - 1; i >= 0; i--) {
@@ -53,7 +54,9 @@ document.addEventListener('keypress', event => {
 				handlerButton = current;
 		}
 
-		game.handleInteraction(handlerButton);
+		if(!handlerButton.classList.contains('wrong')) {
+			game.handleInteraction(handlerButton);
+		}
 	}
 });
 

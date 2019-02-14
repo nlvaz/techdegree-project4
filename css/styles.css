@@ -50,7 +50,7 @@ button {
   margin: 6px;
   border: 1px solid transparent;
   padding: .5rem 1rem;
-  color: var(--color-keys);
+  color: #939498;
   font-size: var(--font-size-medium);
   background-color: var(--color-keys-light);
   border-radius: 5px;
@@ -86,7 +86,7 @@ button {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #ff8096;
 }
 
 
@@ -110,8 +110,8 @@ button {
 
 
 .show {
-  color: #fff;
-  background-color: #4ac0d5;
+  color: #626060;
+  background-color: #d5ffcc;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -131,15 +131,15 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
+  background: #ffccd5;
   border-radius: 5px;
   font-size: var(--font-size-medium);
-  color: #FFFFFF;
+  color: #c5c0c1;
 }
 
 .wrong {
-  background: #f7a964;
-  color: #FFFFFF;
+  background: #ccd5ff;
+  color: #c5c0c1;
 }
 
 .btn__reset {
@@ -180,7 +180,7 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #ff8096;
 }
 
 .start a {
@@ -188,7 +188,7 @@ button {
 }
 
 .win {
-  background-color: var(--color-win);
+  background-color: #7f997a;
 }
 
 .win a {
@@ -196,7 +196,7 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: #923c3c;
 }
 
 .lose a {
