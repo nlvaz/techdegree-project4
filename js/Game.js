@@ -9,15 +9,12 @@ class Game {
 		this.activePhrase = null;
 	}
 
-	/**
-	* Creates phrases for use in game
-	* @return {array} An array of phrases that could be used in the game
-	*/
+	//creates phrases for use in game
 	createPhrases() {
 		const phrases = [
-			new Phrase('Bears Beets Battlestar Galactica'),
+			new Phrase('The Office'),
 			new Phrase('Thats what she said'),
-			new Phrase('The people persons paper people'),
+			new Phrase('Scranton the electric city'),
 			new Phrase('Dunder Mifflin'),
 			new Phrase('Identity theft is not a joke Jim')
 		];
@@ -25,6 +22,7 @@ class Game {
 		return phrases
 	}
 
+	//begins game by selecting and displaying random phrase
 	startGame() {
 		document.querySelector("#overlay").style.display = "none";
 		this.activePhrase = this.getRandomPhrase();
@@ -38,24 +36,28 @@ class Game {
 		return this.phrases[index];
 	}
 
-	handleInteraction() {
-		//checks to see if button clicked matches anything in phrase
-			//disable selected letters onscreen keyboard button
-			//if letter not included in phrase
-				//add wrong css class to selected letter's keyboard button
-				//call removeLife() method
-			//if letter included in phrase
-				//add chosen css class to keyboard button
-				//call showMatchedLetter() method on phrase
-				//call checkForWin() method
-					//if returns true call gameOver()
+	//handles game logic depending on letter button passed to it
+	handleInteraction(button) {
+		button.disabled = true;
+		const letter  = button.textContent;
+
+		if(!this.activePhrase.checkLetter(letter)) {
+			button.classList.add('wrong');
+			this.removeLife();
+		} else {
+			button.classList.add('chosen');
+			this.activePhrase.showMatchedLetter(letter);
+			if(this.checkForWin() === true)
+				this.gameOver(true);
+
+		}
 	}
 
 	//removes a life from scoreboard, if missed === 5 then calls game over
 	removeLife() {
 		this.missed++;
 
-		if(missed < 5) {
+		if(this.missed < 5) {
 			const hearts = document.querySelectorAll("#scoreboard .tries");
 			const img = hearts[hearts.length - this.missed].children[0];
 			img.src = "images/lostHeart.png";
@@ -66,19 +68,16 @@ class Game {
 
 	//checks to see if player revealed entire phrase and returns boolean
 	checkForWin() {
-		const allLetters = document.querySelectorAll("#phrase li .letter");
-		let check = 0;
+		const anyHidden = document.getElementsByClassName("letter hide").length;
 
-		for(let l = 0; l < allLetters.length; l++)
-			if(allLetters[l].classList.contains('show'))
-				check++;
-
-		if(check === allLetters.length)
+		if(!anyHidden) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	}
 
+	//function that takes in a boolean that determines whether or not the user won the game then displays approprite overlay
 	gameOver(gameWon) {
 		const overlay = document.querySelector("#overlay");
 		overlay.style.display = "block";
