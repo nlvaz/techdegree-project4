@@ -23,6 +23,8 @@ startButton.addEventListener('click', () => {
 					keysInRow[l].classList.remove('wrong');
 				else if(keysInRow[l].classList.contains('chosen'))
 					keysInRow[l].classList.remove('chosen');
+
+				keysInRow[l].disabled = false;
 			}
 		}
 

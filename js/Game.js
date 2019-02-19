@@ -16,7 +16,8 @@ class Game {
 			new Phrase('Thats what she said'),
 			new Phrase('Scranton the electric city'),
 			new Phrase('Dunder Mifflin'),
-			new Phrase('Identity theft is not a joke Jim')
+			new Phrase('Identity theft is not a joke Jim'),
+			new Phrase('Prison Mike')
 		];
 
 		return phrases
@@ -31,7 +32,7 @@ class Game {
 
 	//selects random phrase from phrases property
 	getRandomPhrase() {
-		const index = Math.round(Math.random() * 4);
+		const index = Math.round(Math.random() * 5);
 
 		return this.phrases[index];
 	}
